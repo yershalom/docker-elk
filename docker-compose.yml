@@ -69,9 +69,17 @@ services:
     depends_on:
       - elasticsearch
 
+  cerebro:
+    image: yannart/cerebro
+    ports:
+      - "9000:9000"
+    networks:
+      - elk
+
 networks:
   elk:
-    driver: bridge
+    external:
+      name: docker-elk_elk
 
 volumes:
   elasticsearch:
